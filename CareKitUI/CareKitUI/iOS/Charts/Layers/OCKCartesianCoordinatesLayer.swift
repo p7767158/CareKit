@@ -32,12 +32,12 @@
 import UIKit
 
 /// Base class that provides graph coordinates for use in plotting numeric data.
-class OCKCartesianCoordinatesLayer: CALayer, OCKSinglePlotable {
+open class OCKCartesianCoordinatesLayer: CALayer, OCKSinglePlotable {
     static var defaultWidth: CGFloat { return 10.0 }
     static var defaultHeight: CGFloat { return 10.0 }
 
     /// Data points for the graph.
-    var dataPoints: [CGPoint] = [] {
+    public var dataPoints: [CGPoint] = [] {
         didSet {
             orderedDataPoints = dataPoints.sorted { $0.x < $1.x }
             let oldPoints = points
@@ -61,22 +61,22 @@ class OCKCartesianCoordinatesLayer: CALayer, OCKSinglePlotable {
     }
 
     /// Minimum x value dislpayed in the graph.
-    var xMinimum: CGFloat? {
+    public var xMinimum: CGFloat? {
         didSet { setNeedsLayout() }
     }
 
     /// Maximum x value displayed in the graph.
-    var xMaximum: CGFloat? {
+    public var xMaximum: CGFloat? {
         didSet { setNeedsLayout() }
     }
 
     /// Minimum y values displayed in the graph.
-    var yMinimum: CGFloat? {
+    public var yMinimum: CGFloat? {
         didSet { setNeedsLayout() }
     }
 
     /// Maximum y value displayed in the graph.
-    var yMaximum: CGFloat? {
+    public var yMaximum: CGFloat? {
         didSet { setNeedsLayout() }
     }
 
@@ -99,7 +99,7 @@ class OCKCartesianCoordinatesLayer: CALayer, OCKSinglePlotable {
         setNeedsLayout()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setNeedsLayout()
     }
@@ -109,7 +109,7 @@ class OCKCartesianCoordinatesLayer: CALayer, OCKSinglePlotable {
         setNeedsLayout()
     }
 
-    override func layoutSublayers() {
+    open override func layoutSublayers() {
         super.layoutSublayers()
         points = convert(graphSpacePoints: orderedDataPoints)
     }

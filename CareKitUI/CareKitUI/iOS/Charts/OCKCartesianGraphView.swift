@@ -125,7 +125,7 @@ open class OCKCartesianGraphView: OCKView, OCKMultiPlotable {
     }
 
     private let gridView: OCKGridView
-    private let plotView: UIView & OCKMultiPlotable
+    public let plotView: UIView & OCKMultiPlotable
     private let axisView: OCKGraphAxisView
     private let axisHeight: CGFloat = 44
     private let horizontalPlotPadding: CGFloat = 50

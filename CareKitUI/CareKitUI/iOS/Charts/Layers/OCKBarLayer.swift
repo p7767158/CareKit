@@ -31,9 +31,9 @@
 
 import UIKit
 
-class OCKBarLayer: OCKCartesianCoordinatesLayer, OCKGradientPlotable {
-    let gradientLayer = CAGradientLayer()
-    let pointsLayer = CAShapeLayer()
+open class OCKBarLayer: OCKCartesianCoordinatesLayer, OCKGradientPlotable {
+    public let gradientLayer = CAGradientLayer()
+    public let pointsLayer = CAShapeLayer()
 
     var startColor: UIColor = OCKStyle().color.customGray {
         didSet { gradientLayer.colors = [startColor.cgColor, endColor.cgColor] }
@@ -61,7 +61,7 @@ class OCKBarLayer: OCKCartesianCoordinatesLayer, OCKGradientPlotable {
         setupSublayers()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupSublayers()
     }
@@ -77,7 +77,7 @@ class OCKBarLayer: OCKCartesianCoordinatesLayer, OCKGradientPlotable {
         pointsLayer.strokeColor = nil
     }
 
-    override func layoutSublayers() {
+    open override func layoutSublayers() {
         super.layoutSublayers()
         drawPoints(points)
     }
@@ -91,7 +91,7 @@ class OCKBarLayer: OCKCartesianCoordinatesLayer, OCKGradientPlotable {
         pointsLayer.add(grow, forKey: "grow")
     }
 
-    func makePath(points: [CGPoint]) -> CGPath {
+    public func makePath(points: [CGPoint]) -> CGPath {
         let path = UIBezierPath()
         for point in points {
             let origin = CGPoint(x: point.x - barWidth / 2 + horizontalOffset, y: point.y)

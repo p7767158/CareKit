@@ -32,7 +32,7 @@
 import UIKit
 
 /// A graph that displays one or more vertical bar plots.
-class OCKBarPlotView: OCKGradientPlotView<OCKBarLayer> {
+open class OCKBarPlotView: OCKGradientPlotView<OCKBarLayer> {
 
     override func resetLayers() {
         let graphRect = graphBounds()

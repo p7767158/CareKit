@@ -35,38 +35,38 @@ private let accessibilityElementBoundingBoxSize = CGSize(width: 10, height: 10)
 
 
 /// This is an abstract base class for plots that use a gradient mask.
-class OCKGradientPlotView<LayerType: OCKCartesianCoordinatesLayer>: UIView, OCKGradientPlotable, OCKMultiPlotable {
+open class OCKGradientPlotView<LayerType: OCKCartesianCoordinatesLayer>: UIView, OCKGradientPlotable, OCKMultiPlotable {
 
-    let gradientLayer = CAGradientLayer()
-    let pointsLayer = CAShapeLayer()
+    public let gradientLayer = CAGradientLayer()
+    public let pointsLayer = CAShapeLayer()
 
-    func makePath(points: [CGPoint]) -> CGPath {
+    public func makePath(points: [CGPoint]) -> CGPath {
         return UIBezierPath().cgPath
     }
 
-    var dataSeries: [OCKDataSeries] = [] {
+    public var dataSeries: [OCKDataSeries] = [] {
         didSet { resetLayers() }
     }
 
-    var xMinimum: CGFloat? {
+    public var xMinimum: CGFloat? {
         didSet { seriesLayers.forEach { $0.xMinimum = xMinimum } }
     }
 
-    var xMaximum: CGFloat? {
+    public var xMaximum: CGFloat? {
         didSet { seriesLayers.forEach { $0.xMaximum = xMaximum } }
     }
 
-    var yMinimum: CGFloat? {
+    public var yMinimum: CGFloat? {
         didSet { seriesLayers.forEach { $0.yMinimum = yMinimum } }
     }
 
-    var yMaximum: CGFloat? {
+    public var yMaximum: CGFloat? {
         didSet { seriesLayers.forEach { $0.yMaximum = yMaximum } }
     }
 
-    var seriesLayers: [LayerType] = []
+    public var seriesLayers: [LayerType] = []
 
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         seriesLayers.forEach { $0.frame = bounds }
         resetAccessibilityElements()

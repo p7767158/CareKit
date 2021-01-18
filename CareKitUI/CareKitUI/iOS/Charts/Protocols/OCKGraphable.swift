@@ -32,7 +32,7 @@
 import UIKit
 
 /// Any view or layer that can be plotted on conforms to this protocol.
-protocol OCKCartesianGridProtocol: AnyObject {
+public protocol OCKCartesianGridProtocol: AnyObject {
     /// The smallest value shown on the x-axis. If not set, a reasonable default will be used.
     var xMinimum: CGFloat? { get set }
 
@@ -55,12 +55,12 @@ extension OCKCartesianGridProtocol {
 }
 
 /// Any view that only supports plotting a single data series should conform to this protocol.
-protocol OCKSinglePlotable: OCKCartesianGridProtocol {
+public protocol OCKSinglePlotable: OCKCartesianGridProtocol {
     var dataPoints: [CGPoint] { get set }
 }
 
 /// Any view that supports plotting multiple data series should conform to this protocol.
-protocol OCKMultiPlotable: OCKCartesianGridProtocol {
+public protocol OCKMultiPlotable: OCKCartesianGridProtocol {
     var dataSeries: [OCKDataSeries] { get set }
 }
 
@@ -81,7 +81,7 @@ extension OCKMultiPlotable {
     }
 }
 
-protocol OCKGradientPlotable {
+public protocol OCKGradientPlotable {
     var gradientLayer: CAGradientLayer { get }
     var pointsLayer: CAShapeLayer { get }
 
