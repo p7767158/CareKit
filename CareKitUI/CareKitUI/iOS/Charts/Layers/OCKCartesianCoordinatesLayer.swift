@@ -90,8 +90,8 @@ open class OCKCartesianCoordinatesLayer: CALayer, OCKSinglePlotable {
         return 100
     }
 
-    private (set) var points: [CGPoint] = []
-    private (set) var orderedDataPoints: [CGPoint] = []
+    public private (set) var points: [CGPoint] = []
+    public private (set) var orderedDataPoints: [CGPoint] = []
 
     /// Create an instance if a graoh layer.
     override init() {
